@@ -251,3 +251,32 @@ def install():
     # copying base files
     shutil.copytree(BASE_PATH, THEME_DIR, dirs_exist_ok=True)
     print("    done.\n")
+    # resetting the grub file
+    print(f"{G}($){C} Resetting the GRUB file ...\n")
+    reset_grub_theme()
+    print("    done.\n")
+
+    # updating grub
+    print(f"{G}($){C} Updating GRUB ...\n")
+    subprocess.run(GRUB_UPDATE_CMD, shell=True)
+
+    print(f"\n{Y}(#){C} ThemeGrub GRUB Theme has been successfully removed !!\n")
+    exit()
+
+
+if __name__ == "__main__":
+    check_root()  # checking root access
+    banner()  # shows banner
+    try:
+        if len(sys.argv) != 2:
+            raise Exception("Invalid number of arguments: Use either '-i' or '-u'")
+        if sys.argv[-1] in ["-i", "--install"]:
+            install()  # installer
+        elif sys.argv[-1] in ["-u", "--uninstall"]:
+            uninstall()  # uninstaller
+        else:
+            raise Exception("Invalid argument provided: Use either '-i' or '-u'")
+    except Exception as e:
+        print(f"\n{R}(!){C} An unexpected error occurred while running the script !!\n")
+        print(f"{R}(!){C} ERROR : {R}{e}{C}")
+        exit()
