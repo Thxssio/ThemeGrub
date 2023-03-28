@@ -7,7 +7,7 @@
 #    | |  | |  | |/ . \ ____) |___) |_| || |__| |
 #    |_|  |_|  |_/_/ \_\_____/_____/|_____\____/ GRUB THEME
 #
-# Version: 2.1                    Written by Thxssio (DEX)
+# Version: 2.1                    adapted by Thxssio (DEX)
 #
 # 
 # Github : https://github.com/thxssio
@@ -107,7 +107,7 @@ def banner():
     
     """,end="")
     print(f"{C} GRUB THEME\n")
-    print(f"   Written by {B}Thxssio{C} (DEX)")
+    print(f"   adapted by {B}Thxssio{C} (DEX)")
 
 
 def install():
