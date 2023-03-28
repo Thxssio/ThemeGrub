@@ -14,14 +14,14 @@
      
 
 ```
-    python3 ThemeGrub.py -i 
+    sudo python3 ThemeGrub.py -i 
 ```
     
 Ou
 
 ```
-    chmod a+x ThemeGrub.py
-    ThemeGrub.py -i
+    sudo chmod a+x ThemeGrub.py
+    sudo ThemeGrub.py -i
 ```
 
 
