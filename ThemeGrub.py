@@ -7,7 +7,7 @@
 #    | |  | |  | |/ . \ ____) |___) |_| || |__| |
 #    |_|  |_|  |_/_/ \_\_____/_____/|_____\____/ GRUB THEME
 #
-# Version: 2.1                    adapted by Thxssio (DEX)
+# Version: 2.1                    Written by Thxssio (DEX)
 #
 # 
 # Github : https://github.com/thxssio
@@ -107,7 +107,7 @@ def banner():
     
     """,end="")
     print(f"{C} GRUB THEME\n")
-    print(f"   adapted by {B}Thxssio{C} (DEX)")
+    print(f"   Written by {B}Thxssio{C} (DEX)")
 
 
 def install():
@@ -251,6 +251,55 @@ def install():
     # copying base files
     shutil.copytree(BASE_PATH, THEME_DIR, dirs_exist_ok=True)
     print("    done.\n")
+
+    print(f"{G}($){C} Editing the GRUB file ...")
+    THEME_PATH = f"{THEME_DIR}theme.txt"
+    change_grub_theme(THEME_PATH)
+    print("    done.\n")
+
+    print(f"{G}($){C} Updating GRUB ...\n")
+    subprocess.run(GRUB_UPDATE_CMD, shell=True)
+
+    print(f"\n{Y}(#){C} ThemeGrub GRUB theme has been successfully installed !!\n")
+
+    distro = check_distro()
+    if distro == "kali":  # checking if it's Kali Linux
+        print(f"""{R}PS{C}: If you see this note, it means that the script identified your distro as Kali Linux.\n
+    To get the theme to work in Kali, you must remove/edit some default files, which you can do by
+    following the instructions at {B}https://github.com/thxssio{C}""")
+    exit()
+
+
+def uninstall():
+    # uninstaller script
+    print("\n   UNINSTALLER ❌\n")
+    THEME = "darkmatter"  # theme name
+
+    # debian | arch
+    if os.path.exists("/boot/grub/"):
+        GRUB_THEME_DIR = f"/boot/grub/themes/{THEME}/"
+        GRUB_UPDATE_CMD = "grub-mkconfig -o /boot/grub/grub.cfg"
+
+    # fedora | redhat
+    elif os.path.exists("/boot/grub2/"):
+        GRUB_THEME_DIR = f"/boot/grub2/themes/{THEME}/"
+        GRUB_UPDATE_CMD = "grub2-mkconfig -o /boot/grub2/grub.cfg"
+
+    else:  # if theme not found
+        print(f"\n{R}(!){C} Couldn't find the GRUB directory. Exiting the script ...")
+        exit()
+
+    ask = input(f"{B}(?){C} Remove ThemeGrub GRUB Theme (y/n)? {Y}[default = n]{C} : ")
+    if ask.lower() != "y":
+        print(f"\n{R}(!){C} No changes were made. Exiting the script ...\n")
+        exit()
+    else:
+        # removing theme folder
+        print(f"\n{G}($){C} Removed the theme directory ...\n")
+        shutil.rmtree(GRUB_THEME_DIR)
+        print("    done.\n")
+        
+
     # resetting the grub file
     print(f"{G}($){C} Resetting the GRUB file ...\n")
     reset_grub_theme()
@@ -280,3 +329,4 @@ if __name__ == "__main__":
         print(f"\n{R}(!){C} An unexpected error occurred while running the script !!\n")
         print(f"{R}(!){C} ERROR : {R}{e}{C}")
         exit()
+
