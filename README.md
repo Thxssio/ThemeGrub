@@ -10,14 +10,20 @@
 - Grub
 - Python
 
-> chmod a+x ThemeGrub.py
 
-> ThemeGrub.py -i
+     
 
-#or
+```
+    python3 ThemeGrub.py -i 
+```
+    
+Ou
 
-> python3 ThemeGrub.py -i
----
+```
+    chmod a+x ThemeGrub.py
+    ThemeGrub.py -i
+```
+
 
 ## Grub Theme
 
