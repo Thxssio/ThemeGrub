@@ -10,8 +10,8 @@
 - Grub
 - Python
 
-
-## Instalação
+> Primeiro remova o grub original usando o codigo de remover, depois instale o grub modificado usando o codigo de instalar grub abaixo.
+## Instalar
 
 ```
     sudo python3 ThemeGrub.py -i 
