@@ -11,7 +11,7 @@
 - Python
 
 
-     
+## Instalação
 
 ```
     sudo python3 ThemeGrub.py -i 
@@ -23,7 +23,17 @@ Ou
     sudo chmod a+x ThemeGrub.py
     sudo ThemeGrub.py -i
 ```
+## Remover
 
+```
+     sudo python3 ThemeGrub.py -u
+```
+Ou
+
+``` 
+     sudo chmod a+x ThemeGrub.py
+     sudo ThemeGrub.py -u
+```
 
 ## Grub Theme
 
