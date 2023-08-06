@@ -17,7 +17,7 @@
     sudo python3 ThemeGrub.py -i 
 ```
     
-Ou
+Ou | Or
 
 ```
     sudo chmod a+x ThemeGrub.py
@@ -28,7 +28,7 @@ Ou
 ```
      sudo python3 ThemeGrub.py -u
 ```
-Ou
+Ou | Or
 
 ``` 
      sudo chmod a+x ThemeGrub.py
